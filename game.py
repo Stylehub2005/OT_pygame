@@ -1,14 +1,12 @@
 import random
-
 import pygame
 from level import Level
 from basket import Basket
 from ball import Ball
 
-
-WIDTH, HEIGHT = 400, 600
+WIDTH, HEIGHT = 500, 700
 FPS = 60
-BALL_SPAWN_FREQUENCY = 30
+BALL_SPAWN_FREQUENCY = 240
 
 class Game:
     def __init__(self):
@@ -35,19 +33,19 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
 
-
             keys = pygame.key.get_pressed()
             self.basket.move(keys)
-
 
             self.frame_count += 1
             if self.frame_count % BALL_SPAWN_FREQUENCY == 0:
                 self.spawn_balls()
 
-
             self.level.update()
             for ball in self.balls:
                 ball.update()
+                for obstacle in self.level.obstacles:
+                    if ball.rect.colliderect(obstacle.rect):
+                        ball.bounce(obstacle)
 
             self.level.draw(self.screen)
             self.basket.draw(self.screen)
