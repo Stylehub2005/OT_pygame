@@ -3,6 +3,7 @@ import pygame
 
 class Ball:
     def __init__(self, x, y, color):
+        self.color = color
         self.image = pygame.image.load(f"resources/{color}_ball.png")
         self.image = pygame.transform.scale(self.image, (40, 40))
         self.rect = self.image.get_rect()
@@ -10,6 +11,7 @@ class Ball:
         self.speed_x = 0
         self.speed_y = 2
         self.gravity = 0.1
+
 
     def update(self):
         self.rect.x += self.speed_x
