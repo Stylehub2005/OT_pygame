@@ -21,9 +21,9 @@ class HUD:
 
     def draw_menu(self):
         self.screen.blit(self.background, (0, 0))
+        self.font = pygame.font.Font(None, 96)  # Double the font size (48 * 2)
         title_text = self.font.render("Hello", True, (255, 255, 255))
-        self.screen.blit(title_text, (self.width // 2 - title_text.get_width() // 2, 150))
-
+        self.screen.blit(title_text, (self.width // 2 - title_text.get_width() // 2, 180))
         self.draw_button("start", "Start")
         self.draw_button("exit", "Exit")
 
@@ -33,7 +33,7 @@ class HUD:
         score_text = self.button_font.render(f"Score: {score}", True, (255, 255, 255))
 
         self.screen.blit(game_over_text, (self.width // 2 - game_over_text.get_width() // 2, 150))
-        self.screen.blit(score_text, (self.width // 2 - score_text.get_width() // 2, 200))
+        self.screen.blit(score_text, (self.width // 2 - score_text.get_width() // 2, 230))
 
         self.draw_button("restart", "Restart")
         self.draw_button("exit", "Exit")
