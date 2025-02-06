@@ -29,10 +29,10 @@ class Game:
         self.color_switching = False
 
     def spawn_balls(self):
-        num_balls = random.randint(1, 3)
+        num_balls = random.randint(1, 5)
         for _ in range(num_balls):
             x = random.randint(0, WIDTH - 40)
-            color = random.choice(["orange", "blue", "red", "purple"])
+            color = random.choice(["orange", "blue", "red", "purple","gold","black"])
             self.balls.append(Ball(x, -40, color))
 
     def run(self):

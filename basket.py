@@ -2,7 +2,7 @@ import pygame
 
 class Basket:
     def __init__(self, x, y):
-        self.colors = ["orange", "blue", "red", "purple"]
+        self.colors = ["orange", "blue", "red", "purple","gold","black"]
         self.current_color_index = 0
         self.image = None
         self.rect = pygame.Rect(x, y, 80, 40)
