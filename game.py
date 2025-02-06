@@ -27,12 +27,14 @@ class Game:
         self.score = 0
         self.font = pygame.font.Font(None, 36)
         self.color_switching = False
+        self.basket_disabled_until = 0
+        self.double_score_until = 0
 
     def spawn_balls(self):
         num_balls = random.randint(1, 5)
         for _ in range(num_balls):
             x = random.randint(0, WIDTH - 40)
-            color = random.choice(["orange", "blue", "red", "purple","gold","black"])
+            color = random.choice(["orange", "blue", "red", "purple", "gold", "black"])
             self.balls.append(Ball(x, -40, color))
 
     def run(self):
@@ -61,7 +63,7 @@ class Game:
         pygame.quit()
 
     def update_game(self):
-        global HIGH_SCORE  # Use the global HIGH_SCORE variable
+        global HIGH_SCORE
         elapsed_time = (pygame.time.get_ticks() - self.start_time) // 1000
         remaining_time = max(0, self.time_limit - elapsed_time)
 
@@ -72,11 +74,12 @@ class Game:
         if keys[pygame.K_SPACE] and not self.color_switching:
             self.basket.switch_color()
             self.color_switching = True
-
         if not keys[pygame.K_SPACE]:
             self.color_switching = False
 
-        self.basket.move(keys)
+        if pygame.time.get_ticks() > self.basket_disabled_until:
+            self.basket.move(keys)
+
         self.frame_count += 1
         if self.frame_count % BALL_SPAWN_FREQUENCY == 0:
             self.spawn_balls()
@@ -90,16 +93,21 @@ class Game:
                 if ball.rect.colliderect(obstacle.rect):
                     ball.bounce(obstacle)
             if self.basket.catch_ball(ball):
-                if self.basket.colors[self.basket.current_color_index] == ball.color:
-                    self.score += 10
+                if ball.color == "black":
+                    self.basket_disabled_until = pygame.time.get_ticks() + 5000
+                elif ball.color == "gold":
+                    self.double_score_until = pygame.time.get_ticks() + 10000
                 else:
-                    self.score -= 5
+                    score_multiplier = 2 if pygame.time.get_ticks() < self.double_score_until else 1
+                    if self.basket.colors[self.basket.current_color_index] == ball.color:
+                        self.score += 10 * score_multiplier
+                    else:
+                        self.score -= 5
                 balls_to_remove.append(ball)
 
         for ball in balls_to_remove:
             if ball in self.balls:
                 self.balls.remove(ball)
-
 
         if self.score > HIGH_SCORE:
             HIGH_SCORE = self.score
@@ -119,6 +127,8 @@ class Game:
         self.start_time = pygame.time.get_ticks()
         self.score = 0
         self.hud.game_state = "playing"
+        self.basket_disabled_until = 0
+        self.double_score_until = 0
 
     def draw_ui(self, time_left):
         timer_text = self.font.render(f"Time: {time_left}s", True, (255, 255, 255))
@@ -128,6 +138,3 @@ class Game:
         self.screen.blit(timer_text, (20, 20))
         self.screen.blit(score_text, (20, 50))
         self.screen.blit(high_score_text, (20, 80))
-
-    def game_over(self):
-        pass
