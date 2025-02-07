@@ -89,10 +89,13 @@ class Game:
 
         for ball in self.balls[:]:
             ball.update()
+
             for obstacle in self.level.obstacles:
                 if ball.rect.colliderect(obstacle.rect):
                     ball.bounce(obstacle)
+
             if self.basket.catch_ball(ball):
+                ball.start_animation()
                 if ball.color == "black":
                     self.basket_disabled_until = pygame.time.get_ticks() + 5000
                 elif ball.color == "gold":
@@ -103,6 +106,10 @@ class Game:
                         self.score += 10 * score_multiplier
                     else:
                         self.score -= 5
+                balls_to_remove.append(ball)
+
+            if ball.rect.bottom >= HEIGHT:
+                ball.start_animation()
                 balls_to_remove.append(ball)
 
         for ball in balls_to_remove:
