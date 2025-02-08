@@ -56,7 +56,7 @@ class Game:
             elif self.hud.game_state == "playing":
                 self.update_game()
             elif self.hud.game_state == "game_over":
-                self.hud.draw_game_over(self.score)
+                self.hud.draw_game_over(self.score, HIGH_SCORE)
 
             pygame.display.flip()
             self.clock.tick(FPS)
@@ -113,7 +113,7 @@ class Game:
 
                     else:
                         self.score -= 5
-                        
+
 
                 break
 

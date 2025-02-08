@@ -28,14 +28,22 @@ class HUD:
         self.draw_button("start", "Start")
         self.draw_button("exit", "Exit")
 
-    def draw_game_over(self, score):
+    def draw_game_over(self, score, high_score):
         self.screen.blit(self.background, (0, 0))
-        game_over_text = self.font.render("Game Over", True, (255, 0, 0))
-        score_text = self.button_font.render(f"Score: {score}", True, (255, 255, 255))
 
+        # Текст "Game Over"
+        game_over_text = self.font.render("Game Over", True, (255, 0, 0))
         self.screen.blit(game_over_text, (self.width // 2 - game_over_text.get_width() // 2, 150))
+
+        # Отображение текущего счёта
+        score_text = self.button_font.render(f"Score: {score}", True, (255, 255, 255))
         self.screen.blit(score_text, (self.width // 2 - score_text.get_width() // 2, 230))
 
+        # Отображение High Score
+        high_score_text = self.button_font.render(f"High Score: {high_score}", True, (255, 255, 255))
+        self.screen.blit(high_score_text, (self.width // 2 - high_score_text.get_width() // 2, 260))
+
+        # Кнопки Restart и Exit
         self.draw_button("restart", "Restart")
         self.draw_button("exit", "Exit")
 
