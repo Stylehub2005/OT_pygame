@@ -85,44 +85,53 @@ class Game:
             self.spawn_balls()
 
         self.level.update()
-        balls_to_remove = []
 
-        for ball in self.balls[:]:
-            ball.update()
+
+
+        for ball in self.balls:
+            if ball.to_remove:
+                self.balls.remove(ball)
+
 
             for obstacle in self.level.obstacles:
                 if ball.rect.colliderect(obstacle.rect):
                     ball.bounce(obstacle)
 
             if self.basket.catch_ball(ball):
-                ball.start_animation()
+
+                ball.explode_ball()
                 if ball.color == "black":
                     self.basket_disabled_until = pygame.time.get_ticks() + 5000
+
                 elif ball.color == "gold":
                     self.double_score_until = pygame.time.get_ticks() + 10000
                 else:
                     score_multiplier = 2 if pygame.time.get_ticks() < self.double_score_until else 1
                     if self.basket.colors[self.basket.current_color_index] == ball.color:
                         self.score += 10 * score_multiplier
+
+
                     else:
                         self.score -= 5
-                balls_to_remove.append(ball)
+                        
 
-            if ball.rect.bottom >= HEIGHT:
-                ball.start_animation()
-                balls_to_remove.append(ball)
+                break
 
-        for ball in balls_to_remove:
-            if ball in self.balls:
-                self.balls.remove(ball)
+
+            if ball.rect.bottom >= HEIGHT-20:
+                ball.explode_ball()
+
+
 
         if self.score > HIGH_SCORE:
             HIGH_SCORE = self.score
+
 
         self.screen.blit(self.level.background, (0, 0))
         self.level.draw(self.screen)
         self.basket.draw(self.screen)
         for ball in self.balls:
+            ball.update()
             ball.draw(self.screen)
         self.draw_ui(remaining_time)
 
