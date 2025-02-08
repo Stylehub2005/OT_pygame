@@ -7,7 +7,7 @@ from HUD import HUD
 
 WIDTH, HEIGHT = 500, 700
 FPS = 60
-BALL_SPAWN_FREQUENCY = 180
+BALL_SPAWN_FREQUENCY = 240
 HIGH_SCORE = 0
 
 
@@ -31,7 +31,7 @@ class Game:
         self.double_score_until = 0
 
     def spawn_balls(self):
-        num_balls = random.randint(1, 5)
+        num_balls = random.randint(1, 4)
         for _ in range(num_balls):
             x = random.randint(0, WIDTH - 40)
             color = random.choice(["orange", "blue", "red", "purple", "gold", "black"])
