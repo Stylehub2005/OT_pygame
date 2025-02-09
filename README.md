@@ -3,7 +3,7 @@ Tento repozitár obsahuje implementáciu prototypu hry v Pygame, ktorá bola vyt
 #### Autor: Artsiom Ladziata
 #### Vybraná téma: Farba ako herná mechanika
 
-## 1 Uvod
+## 1) Uvod
 Vytvorená hra je určená na demonštráciu v rámci predmetu „Objektové technológie“ a predstavuje funkčný prototyp projektu na záverečné hodnotenie. V tejto hre hráč ovláda kôš a snaží sa chytať padajúce lopty rôznych farieb, pričom sa vyhýba prekážkam a negatívnym efektom. Hra zahŕňa prvky ako správa času, bodov a bonusov, ako aj možnosť prepínania farieb koša na interakciu s loptami. Projekt demonštruje základy mechaník arkádových hier a môže slúžiť ako základ pre ďalší vývoj.
 
 ### 1.1 Inšpirácia
@@ -23,7 +23,7 @@ Cieľom hry Catch the Ball je, aby hráč získal čo najvyššie skóre počas 
 __Pygame-CE:__ zvolený programovací jazyk.
 __PyCharm 2024.1:__ vybrané IDE.
 
-## Koncept
+## 2) Koncept
 ### 2.1 Prehľad hry
 Hráč ovláda kôš a jeho úlohou je chytať farebné lopty, ktoré padajú z vrchu obrazovky. Každá lopta má svoju farbu a hráč musí prepínať farbu koša tak, aby zodpovedala farbe lopty, ktorú chce chytiť. Chytenie správnej lopty prináša body, zatiaľ čo nesprávne chytenie alebo premeškanie lopty vedie k strate bodov alebo iným penalizáciám. Cieľom je získať čo najviac bodov v obmedzenom časovom intervale.
 
@@ -46,7 +46,7 @@ Dynamická obtiažnosť: S postupom hry sa zvyšuje rýchlosť lôpt, ich množs
 * __Level:__ Trieda, ktorá spravuje nastavenia jednotlivých úrovní (pozadie, počet a rýchlosť lôpt, umiestnenie prekážok). Zodpovedá za postupné zvyšovanie obtiažnosti hry.
 * __Sounds:__ Trieda, ktorá spravuje zvukové efekty a hudbu. Obsahuje funkcie na prehrávanie zvukov pri interakciách (napr. chytenie lopty, premeškanie lopty, prepínanie farieb) a riadenie hudby na pozadí.
 
-
+## 3) Grafika
 ### 3.1 Interpretácia témy (Catch the Ball)
 Hra sa zameriava na dynamický gameplay s prvkami chytania lopty. Pre vizuálnu stránku boli použité assety z itch.io, ktoré zodpovedajú štýlu hry. Hlavným cieľom je vytvoriť zábavnú a vizuálne príťažlivú hru, v ktorej bude hráč chytat loptu a vyhýbať sa rôznym prekážkam. Assety pre loptu a postavy boli vybrané tak, aby sa harmonizovali s konceptom hry, pričom sa zachoval minimalistický štýl.
 <br/>
@@ -62,6 +62,24 @@ Obrázki  2,3,4  Ukážka spritov
 V hre boli použité assety z itch.io, konkrétne kolekcia pre loptu a postavy (napríklad "Catch the Ball Pack"), ako aj rôzne prvky prostredia, ako bloky a iné prekážky. Cieľom bolo vytvoriť jasný a príťažlivý vizuálny štýl, ktorý odráža tému hry, kombinujúci jednoduchosť a dynamiku. V budúcnosti sa plánuje pridať rôzne úrovne s unikátnymi prekážkami a meniace sa pozadia, aby sa udržal záujem hráča.
 <br/>
 ![image](https://github.com/user-attachments/assets/247c02cd-3f2c-4092-9b5b-f9dcd7ef32c1)
+## 4) Zvuk
+### 4.1 Hudba
+Výber hudby do pozadia bol zameraný na dynamickú a atmosférickú hudbu, ktorá je vhodná pre hry s prvkami chytania lopty. Pre tento účel bola použitá hudba z Free Sound Pack (https://example.itch.io/freesoundpack), ktorá vytvára energickú a pohlcujúcu atmosféru, ktorá sa hodí k hernému procesu. Hudobné spracovanie pomáha udržať rýchly tempo hry a vytvára správnu náladu pre dynamické momenty.
+
+### 4.2 Zvuky
+Zvuky v hre boli vybrané v súlade s dynamickým herným procesom, zameriavajúc sa na prvky, ktoré súvisia s chytaním lopty a interakciou s rôznymi objektmi. Pre vytvorenie zvukových efektov boli použité voľne dostupné assety vo formáte MP3 z kolekcie "Sports Sound Pack" (https://example.itch.io/sportssoundpack), z ktorých boli vybrané zvuky pre zásah lopty, úspešné zachytenie a nárazy do prekážok. Tieto zvukové efekty pridávajú hre realistickosť a zintenzívňujú ponorenie do herného procesu.
+
+## 5) Herný zážitok
+### 5.1 Používateľské rozhranie
+Používateľské rozhranie bude zladené s celkovým grafickým štýlom hry, pričom úvodná obrazovka ponúkne možnosti spustiť hru alebo ukončiť aplikáciu. Okrem toho budú v hre prítomné ikony pre nastavenia a pomocné informácie, ktoré budú v súlade s jednoduchým a intuitívnym dizajnom.
+
+### 5.2 Ovládanie
+__Klávesnica :__
+__Šípky:__ pohyb hráča po mape.
+__Medzerník:__ zmena farby košíka.
+
+__Myš :__
+__Ľavé tlačidlo:__ interakcia s objektmi v hre.
 
 
 
