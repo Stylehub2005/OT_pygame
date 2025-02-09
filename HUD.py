@@ -33,19 +33,19 @@ class HUD:
     def draw_game_over(self, score, high_score):
         self.screen.blit(self.background, (0, 0))
 
-        # Текст "Game Over"
+
         game_over_text = self.font.render("Game Over", True, (255, 0, 0))
         self.screen.blit(game_over_text, (self.width // 2 - game_over_text.get_width() // 2, 150))
 
-        # Отображение текущего счёта
+
         score_text = self.button_font.render(f"Score: {score}", True, (255, 255, 255))
         self.screen.blit(score_text, (self.width // 2 - score_text.get_width() // 2, 230))
 
-        # Отображение High Score
+
         high_score_text = self.button_font.render(f"High Score: {high_score}", True, (255, 255, 255))
         self.screen.blit(high_score_text, (self.width // 2 - high_score_text.get_width() // 2, 260))
 
-        # Кнопки Restart и Exit
+
         self.draw_button("restart", "Restart")
         self.draw_button("exit", "Exit")
 
@@ -63,16 +63,16 @@ class HUD:
             mouse_pos = event.pos
             if self.game_state == "menu":
                 if self.buttons["start"].collidepoint(mouse_pos):
-                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
+                    pygame.mixer.Sound(SOUNDS["button"]).play()
                     self.game_state = "playing"
                 elif self.buttons["exit"].collidepoint(mouse_pos):
-                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
+                    pygame.mixer.Sound(SOUNDS["button"]).play()
                     return "exit"
             elif self.game_state == "game_over":
                 if self.buttons["restart"].collidepoint(mouse_pos):
-                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
+                    pygame.mixer.Sound(SOUNDS["button"]).play()
                     self.game_state = "playing"
                     return "restart"
                 elif self.buttons["exit"].collidepoint(mouse_pos):
-                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
+                    pygame.mixer.Sound(SOUNDS["button"]).play()
                     return "exit"
