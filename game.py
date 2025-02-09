@@ -4,11 +4,15 @@ from ball import Ball
 from basket import Basket
 from level import Level
 from HUD import HUD
+from sounds import SOUNDS
 
 WIDTH, HEIGHT = 500, 700
 FPS = 60
 BALL_SPAWN_FREQUENCY = 240
 HIGH_SCORE = 0
+
+
+
 
 
 class Game:
@@ -95,10 +99,11 @@ class Game:
 
             for obstacle in self.level.obstacles:
                 if ball.rect.colliderect(obstacle.rect):
+                    pygame.mixer.Sound(SOUNDS["hit"]).play()
                     ball.bounce(obstacle)
 
             if self.basket.catch_ball(ball):
-
+                pygame.mixer.Sound(SOUNDS["catch"]).play()
                 ball.explode_ball()
                 if ball.color == "black":
                     self.basket_disabled_until = pygame.time.get_ticks() + 5000
@@ -119,6 +124,7 @@ class Game:
 
 
             if ball.rect.bottom >= HEIGHT-20:
+                pygame.mixer.Sound(SOUNDS["miss"]).play()
                 ball.explode_ball()
 
 

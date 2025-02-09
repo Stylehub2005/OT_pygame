@@ -1,6 +1,8 @@
 
 import pygame
 
+from sounds import SOUNDS
+
 
 class HUD:
     def __init__(self, screen, width, height):
@@ -61,13 +63,16 @@ class HUD:
             mouse_pos = event.pos
             if self.game_state == "menu":
                 if self.buttons["start"].collidepoint(mouse_pos):
+                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
                     self.game_state = "playing"
                 elif self.buttons["exit"].collidepoint(mouse_pos):
+                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
                     return "exit"
             elif self.game_state == "game_over":
                 if self.buttons["restart"].collidepoint(mouse_pos):
+                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
                     self.game_state = "playing"
                     return "restart"
                 elif self.buttons["exit"].collidepoint(mouse_pos):
+                    pygame.mixer.Sound(SOUNDS["button"]).play()  # Звук кнопки
                     return "exit"
-        return None
