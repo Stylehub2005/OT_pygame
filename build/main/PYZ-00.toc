@@ -323,6 +323,7 @@
   ('socket',
    'C:\\Users\\egis\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\socket.py',
    'PYMODULE'),
+  ('sounds', 'D:\\Users\\pythonproect\\OT_pygame\\sounds.py', 'PYMODULE'),
   ('statistics',
    'C:\\Users\\egis\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\statistics.py',
    'PYMODULE'),
