@@ -47,6 +47,29 @@ Dynamická obtiažnosť: S postupom hry sa zvyšuje rýchlosť lôpt, ich množs
 * __Sounds:__ Trieda, ktorá spravuje zvukové efekty a hudbu. Obsahuje funkcie na prehrávanie zvukov pri interakciách (napr. chytenie lopty, premeškanie lopty, prepínanie farieb) a riadenie hudby na pozadí.
 
 
+### 3.1 Interpretácia témy (Catch the Ball)
+Hra sa zameriava na dynamický gameplay s prvkami chytania lopty. Pre vizuálnu stránku boli použité assety z itch.io, ktoré zodpovedajú štýlu hry. Hlavným cieľom je vytvoriť zábavnú a vizuálne príťažlivú hru, v ktorej bude hráč chytat loptu a vyhýbať sa rôznym prekážkam. Assety pre loptu a postavy boli vybrané tak, aby sa harmonizovali s konceptom hry, pričom sa zachoval minimalistický štýl.
+<br/>
+![image](https://github.com/user-attachments/assets/38c467c1-666a-477c-a690-2bc84fc595f3)
+
+![image](https://github.com/user-attachments/assets/3ade682b-d7d8-4c19-b624-4d9c2efc9de8)
+
+![image](https://github.com/user-attachments/assets/1e076483-7190-474e-9731-476c97bd6548)
+
+Obrázki  2,3,4  Ukážka spritov 
+
+### 3.2 Dizajn
+V hre boli použité assety z itch.io, konkrétne kolekcia pre loptu a postavy (napríklad "Catch the Ball Pack"), ako aj rôzne prvky prostredia, ako bloky a iné prekážky. Cieľom bolo vytvoriť jasný a príťažlivý vizuálny štýl, ktorý odráža tému hry, kombinujúci jednoduchosť a dynamiku. V budúcnosti sa plánuje pridať rôzne úrovne s unikátnymi prekážkami a meniace sa pozadia, aby sa udržal záujem hráča.
+<br/>
+![image](https://github.com/user-attachments/assets/247c02cd-3f2c-4092-9b5b-f9dcd7ef32c1)
+
+
+
+
+
+
+
+
 
 
 
